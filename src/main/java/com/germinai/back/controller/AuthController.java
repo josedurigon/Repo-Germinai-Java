@@ -2,7 +2,7 @@ package com.germinai.back.controller;
 
 import com.germinai.back.dto.LoginRequest;
 import com.germinai.back.entities.User;
-import com.germinai.back.repository.UserRepository;
+import com.germinai.back.repository.interfaces.UserRepository;
 import com.germinai.back.utils.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

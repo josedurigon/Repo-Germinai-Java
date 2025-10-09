@@ -4,7 +4,7 @@ import com.germinai.back.dto.UserRegisterRequest;
 import com.germinai.back.dto.UserResponse;
 import com.germinai.back.entities.User;
 import com.germinai.back.entities.UserRoles;
-import com.germinai.back.repository.UserRepository;
+import com.germinai.back.repository.interfaces.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

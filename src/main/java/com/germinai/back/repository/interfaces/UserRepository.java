@@ -1,4 +1,4 @@
-package com.germinai.back.repository;
+package com.germinai.back.repository.interfaces;
 
 import com.germinai.back.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;

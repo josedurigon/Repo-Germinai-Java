@@ -3,9 +3,7 @@ package com.germinai.back.controller;
 
 import com.germinai.back.dto.UserRegisterRequest;
 import com.germinai.back.dto.UserResponse;
-import com.germinai.back.dto.UserRolesDto;
-import com.germinai.back.entities.UserRoles;
-import com.germinai.back.repository.UserRepository;
+import com.germinai.back.repository.interfaces.UserRepository;
 import com.germinai.back.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
