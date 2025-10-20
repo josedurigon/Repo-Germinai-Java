@@ -3,12 +3,14 @@ package com.germinai.back.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = {"talhoes", "recursos", "funcionarios", "meta", "custos", "atividades", "historicoStatus"})
 public class Safra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

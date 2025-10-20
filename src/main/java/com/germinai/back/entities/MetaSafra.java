@@ -3,11 +3,13 @@ package com.germinai.back.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = {"safra"})
 public class MetaSafra {
 
     @Id
