@@ -17,6 +17,9 @@ public class Cultura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false)
+    private String nome;
+
     @Column(name = "ciclo_dias", nullable = false)
     private Integer cicloDias;
 

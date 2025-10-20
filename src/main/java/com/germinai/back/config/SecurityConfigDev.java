@@ -33,19 +33,8 @@ public class SecurityConfigDev {
                 .csrf(csrf -> csrf.disable()) // API REST
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // Swagger e Actuator liberados em dev
-                        .requestMatchers(
-                                "/swagger-ui/**", "/v3/api-docs/**",
-                                "/actuator/health", "/actuator/info").permitAll()
-                        // OPTIONS para preflight CORS
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/user/register").permitAll() // <--- aqui
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        // Seus endpoints públicos (se houver)
-                        .requestMatchers("/public/**").permitAll()
-                        // Demais endpoints da API exigem auth
-                        .anyRequest().authenticated()
+                        // TEMPORÁRIO: Liberando todos os endpoints para testes
+                        .anyRequest().permitAll()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults()); // simples para dev
