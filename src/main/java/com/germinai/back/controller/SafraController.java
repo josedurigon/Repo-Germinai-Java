@@ -1,7 +1,11 @@
 package com.germinai.back.controller;
 
+import com.germinai.back.dto.safra.SafraCreateRequest;
+import com.germinai.back.dto.safra.SafraResponse;
 import com.germinai.back.entities.Safra;
-import com.germinai.back.service.interfaces.ISafraService;
+import com.germinai.back.service.SafraService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,25 +13,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/safra")
+@RequiredArgsConstructor
 public class SafraController {
 
-
-    private ISafraService safraService;
+    private final SafraService safraService;
 
     @GetMapping
-    public ResponseEntity<List<Safra>> listar() {
-        return ResponseEntity.ok(safraService.buscarTodasAsSafras());
+    public ResponseEntity<List<SafraResponse>> listar() {
+        return ResponseEntity.ok(safraService.buscarTodasAsSafrasDto());
+    }
+
+    @GetMapping("/ativas")
+    public ResponseEntity<List<SafraResponse>> listarAtivas() {
+        return ResponseEntity.ok(safraService.buscarSafrasAtivas());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Safra> buscar(@PathVariable Long id) {
-        return ResponseEntity.ok(safraService.buscarSafraPorId(id));
+    public ResponseEntity<SafraResponse> buscar(@PathVariable Long id) {
+        return ResponseEntity.ok(safraService.buscarSafraPorIdDto(id));
     }
 
     @PostMapping
-    public ResponseEntity<Safra> cadastrar(@RequestBody Safra safra) {
-        safraService.criarSafra(safra);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<SafraResponse> cadastrar(@Valid @RequestBody SafraCreateRequest request) {
+        SafraResponse response = safraService.criarSafraCompleta(request);
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}")
