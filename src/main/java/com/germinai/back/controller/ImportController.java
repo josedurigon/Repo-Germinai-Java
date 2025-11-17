@@ -18,8 +18,8 @@ public class ImportController {
 
     @GetMapping("/soja")
     public String importarSoja() {
-        Path csv = Path.of("C:\\Github\\projeto_integrador\\machine_learning\\soja.csv");
-        Path csvCont = Path.of("C:\\Github\\projeto_integrador\\machine_learning\\milho.csv");
+        Path csv = Path.of("C:\\Github\\projeto_integrador\\machine_learning\\soja_v2.csv");
+        Path csvCont = Path.of("C:\\Github\\projeto_integrador\\machine_learning\\milho_v2.csv");
         importService.importarCsvMilho(csvCont);
         return "Importação concluída com sucesso.";
     }
